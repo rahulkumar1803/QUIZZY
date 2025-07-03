@@ -46,7 +46,7 @@ function QuizBuildNav({ newQuiz, setNewQuiz }) {
         icon: textIcon,
       };
 
-      const res = await fetch('http://localhost:3000/api/quizzes', {
+      const res = await fetch('api/quizzes', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -103,7 +103,7 @@ function QuizBuildNav({ newQuiz, setNewQuiz }) {
       console.log(updatedQuiz[findIndexQuiz]);
       updatedQuiz[findIndexQuiz].icon = convertIconText;
       try {
-        const res = await fetch(`http://localhost:3000/api/quizzes?id=${id}`, {
+        const res = await fetch(`api/quizzes?id=${id}`, {
           method: 'PUT',
           headers: {
             'Content-type': 'application/json',

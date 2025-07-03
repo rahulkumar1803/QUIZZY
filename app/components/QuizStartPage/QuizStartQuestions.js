@@ -51,7 +51,7 @@ function QuizStartQuestions({ onUpdateTime }) {
             // Get the _id of the quiz
             if (id) { // Check if id is not undefined
                 const res = await fetch(
-                    `http://localhost:3000/api/quizzes?id=${id}`, // Include the id as a query parameter
+                    `api/quizzes?id=${id}`, // Include the id as a query parameter
                     {
                         method: 'PUT',
                         headers: {

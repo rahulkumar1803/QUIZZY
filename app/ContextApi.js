@@ -46,7 +46,7 @@ export function ContextProvider({ children }) {
   useEffect(() => {
     const fetchAllQuizzes = async () => {
       try{
-        const response = await fetch('http://localhost:3000/api/quizzes' , {
+        const response = await fetch('api/quizzes' , {
           cache: 'no-cache',
         });
         if(!response.ok){
