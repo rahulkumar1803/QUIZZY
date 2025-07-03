@@ -3,22 +3,23 @@ import { connectToDB } from "@/libs/mongoDB";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
+  await connectToDB();
 
-    await connectToDB();
+  const { quizTitle, icon, quizQuestions } = await request.json();
 
-    const { quizTitle, icon, quizQuestions } = await request.json();
+  try {
+    const newQuiz = await Quiz.create({ quizTitle, icon, quizQuestions });
 
-    await Quiz.create({ quizTitle, icon, quizQuestions });
-
-    try {
-        return NextResponse.json({
-            id: newQuiz._id,
-            message: 'The Quiz has Been Created Successfully.',
-        });
-    } catch (error) {
-        return NextResponse.json({ message: error });
-    }
+    return NextResponse.json({
+      id: newQuiz._id,
+      message: 'The Quiz has Been Created Successfully.',
+    });
+  } catch (error) {
+    console.error("Quiz creation failed:", error);
+    return NextResponse.json({ message: 'Failed to create quiz.' }, { status: 500 });
+  }
 }
+
 
 export async function GET() {
     await connectToDB();

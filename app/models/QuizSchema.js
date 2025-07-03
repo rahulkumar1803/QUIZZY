@@ -1,10 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
 const questionSchema = new Schema({
-    id: { type: String, require: true },
-    mainQuestion: { type: String, require: true },
-    choices: { type: [String], require: true },
-    correctAnswer: { type: Number, require: true },
+    id: { type: String, required: true },
+    mainQuestion: { type: String, required: true },
+    choices: { type: [String], required: true },
+    correctAnswer: { type: Number, required: true },
     answeredResult: { type: Number, default: -1 },
     statistics: {
         totalAttempts: { type: Number, default: 0 },
@@ -14,9 +14,9 @@ const questionSchema = new Schema({
 });
 
 const quizSchema = new mongoose.Schema({
-    icon: { type: String, require: true },
-    quizTitle: { type: String, require: true },
-    quizQuestions: { type: [questionSchema], require: true },
+    icon: { type: String, required: true },
+    quizTitle: { type: String, required: true },
+    quizQuestions: { type: [questionSchema], required: true },
 });
 
 const Quiz = mongoose.models.Quiz || mongoose.model('Quiz', quizSchema);
